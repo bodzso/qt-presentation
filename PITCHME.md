@@ -1,5 +1,7 @@
 # [Qt keretrendszer](https://doc.qt.io)
 
+![](assets/img/Qt-logo-large.png)
+
 ---
 
 # [Qt core](https://doc.qt.io/qt-5/qtcore-index.html)
@@ -124,7 +126,7 @@ object->setProperty("priority", "VeryHigh");
 
 # [Signals & Slots](https://doc.qt.io/qt-5/signalsandslots.html)
 
-![](assets\abstract-connections.png)
+![](assets/img/abstract-connections.png)
 
 meta-object systemnek köszönhető
 
@@ -250,7 +252,7 @@ Platform függetlenül tárolja a bináris fájlokat a futtatható alkalmazásba
 
 :/ használatával
 
-![](assets\resources.png)
+![](assets/img/resources.png)
 
 ## qmake(.pro)
 
@@ -302,7 +304,7 @@ int main(int argc, char *argv[])
 
 Mintapélda [doc.qt.io](https://doc.qt.io)
 
-![](assets\doc.qt.io.png)
+![](assets/img/doc.qt.io.png)
 
 - **QDoc** binary
 - **qdocconf** configuration files
