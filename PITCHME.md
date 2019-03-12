@@ -36,7 +36,19 @@ QT += core
 
 @olend
 
-TODO
+#### Példa
+
+```c++
+#include <QObject>
+
+class foo : public QObject {
+    Q_OBJECT
+    
+    ...
+}
+```
+
+
 
 ---
 
