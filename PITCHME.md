@@ -1,6 +1,6 @@
-# [Qt keretrendszer](https://doc.qt.io)
+---?image=assets/img/Qt-logo-large.png&size=50% auto&opacity=20
 
----?image=assets/img/Qt-logo-large.png
+# [Qt keretrendszer](https://doc.qt.io)
 
 ---
 
