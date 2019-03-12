@@ -11,8 +11,6 @@
 QT += core
 ```
 
-Mirről lesz szó
-
 @ul
 
 - The Meta-Object System
@@ -44,7 +42,7 @@ TODO
 
 ### [The Property System](https://doc.qt.io/qt-5/properties.html)
 
-`Q_PROPERTY()` macro
+#### A Q_PROPERTY() makró
 
 ```
 Q_PROPERTY(type name
@@ -134,8 +132,6 @@ children()
 
 ### [Signals & Slots](https://doc.qt.io/qt-5/signalsandslots.html)
 
-meta-object systemnek köszönhető
-
 ![](assets/img/abstract-connections.png)
 
 +++
@@ -152,8 +148,6 @@ Object-ek közötti kommunikációra, callback módszer helyett, még a szálakk
 - **connect**(küldő, ..., vevő, ...)
 
 @ulend
-
-A **Signal** signature-nek meg kell egyeznie a **Slot** signature-el.
 
 +++
 
@@ -175,6 +169,8 @@ Default value esetén a SIGNAL-ben található függvény argumentumai nem lehet
 +++
 
 @title[Connect használata]
+
+A **Signal** signature-nek meg kell egyeznie a **Slot** signature-el.
 
 ##### Helyes
 
@@ -358,4 +354,123 @@ Mintapélda [doc.qt.io](https://doc.qt.io)
 
 ### [qmake](https://doc.qt.io/qt-5/qmake-manual.html)
 
-TODO
+```
+SOURCES += main.cpp
+
+SOURCES = hello.cpp \
+          main.cpp
+
+HEADERS += hello.h
+
+TARGET = helloworld
+```
+
+#### Makefile
+
+```
+qmake -o Makefile hello.pro
+```
+
+#### Visual Studio
+
+```
+qmake -tp vc hello.pro
+```
+
+#### Debuggolható alkalmazás
+
+```
+CONFIG += debug
+```
+
+#### Platform specifikus forrásfájlok
+
+```
+win32 {
+    SOURCES += hellowin.cpp
+}
+
+unix {
+    SOURCES += hellounix.cpp
+}
+```
+
++++
+
+#### Template
+
+- app
+- lib
+- subdirs
+
+```
+TEMPLATE = lib
+```
+
+#### Qt module/library
+
+```
+QT += network xml
+QT -= gui # Only the core module is used.
+```
+
+##### Így ne használjuk
+
+```
+QT = network xml # This will omit the core and gui modules.
+```
+
+#### Külső library
+
+```
+LIBS += -L/usr/local/lib -lmath
+```
+
+#### Header fájlok keresési helye
+
+```
+INCLUDEPATH = c:/msdev/include d:/stl/include
+```
+
++++
+
+#### Frissen generált fájl
+
+Szerencsére a Qt creator sok mindent támogat, ezért nem kell mindent kézzel írni
+
+```
+QT       += core gui
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+TARGET = hello_world
+TEMPLATE = app
+
+# The following define makes your compiler emit warnings if you use
+# any feature of Qt which has been marked as deprecated (the exact warnings
+# depend on your compiler). Please consult the documentation of the
+# deprecated API in order to know how to port your code away from it.
+DEFINES += QT_DEPRECATED_WARNINGS
+
+# You can also make your code fail to compile if you use deprecated APIs.
+# In order to do so, uncomment the following line.
+# You can also select to disable deprecated APIs only up to a certain version of Qt.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+
+CONFIG += c++11
+
+SOURCES += \
+        main.cpp \
+        mainwindow.cpp
+
+HEADERS += \
+        mainwindow.h
+
+FORMS += \
+        mainwindow.ui
+
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
+```
