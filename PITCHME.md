@@ -377,6 +377,8 @@ qmake -o Makefile hello.pro
 qmake -tp vc hello.pro
 ```
 
++++
+
 #### Debuggolható alkalmazás
 
 ```
@@ -419,6 +421,8 @@ QT -= gui # Only the core module is used.
 ```
 QT = network xml # This will omit the core and gui modules.
 ```
+
++++
 
 #### Külső library
 
