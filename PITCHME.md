@@ -4,11 +4,12 @@
 
 ---
 
-# [Qt core](https://doc.qt.io/qt-5/qtcore-index.html)
+### [Qt core](https://doc.qt.io/qt-5/qtcore-index.html)
 
-`#include <QtCore>`
-
-`QT += core`
+```c++
+#include <QtCore>
+QT += core
+```
 
 Mirről lesz szó:
 
@@ -27,13 +28,13 @@ Mirről lesz szó:
 
 ---
 
-# [The Meta-Object System](https://doc.qt.io/qt-5/metaobjects.html)
+### [The Meta-Object System](https://doc.qt.io/qt-5/metaobjects.html)
 
 @ol
 
-1. QObject biztosítja meta-object system-et
-2. Q_OBJECT macro
-3. Meta-Object Compiler (moc) hozza létre a kódot a háttérben
+- QObject biztosítja meta-object system-et
+- Q_OBJECT macro
+- Meta-Object Compiler (moc) hozza létre a kódot a háttérben
 
 @olend
 
@@ -41,7 +42,7 @@ TODO
 
 ---
 
-# [The Property System](https://doc.qt.io/qt-5/properties.html)
+### [The Property System](https://doc.qt.io/qt-5/properties.html)
 
 `Q_PROPERTY()` macro
 
@@ -66,7 +67,7 @@ Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)
 Q_PROPERTY(QCursor cursor READ cursor WRITE setCursor RESET unsetCursor)
 ```
 
-## Példa
+#### Példa
 
 ```c++
 class MyClass : public QObject
@@ -107,12 +108,14 @@ object->setProperty("priority", "VeryHigh");
 
 ---
 
-# [Object Trees & Ownership](https://doc.qt.io/qt-5/objecttrees.html)
+### [Object Trees & Ownership](https://doc.qt.io/qt-5/objecttrees.html)
 
-`QObject(QObject *parent = nullptr)`
-`children()`
+```
+QObject(QObject *parent = nullptr)
+children() 
+```
 
-## Construction/Destruction Order of QObjects
+#### Construction/Destruction Order of QObjects
 
 @ul
 
@@ -124,7 +127,7 @@ object->setProperty("priority", "VeryHigh");
 
 ---
 
-# [Signals & Slots](https://doc.qt.io/qt-5/signalsandslots.html)
+### [Signals & Slots](https://doc.qt.io/qt-5/signalsandslots.html)
 
 ![](assets/img/abstract-connections.png)
 
@@ -143,15 +146,15 @@ Object-ek közötti kommunikációra, callback módszer helyett, még a szálakk
 
 A **Signal** signature-nek meg kell egyeznie a **Slot** signature-el.
 
-## Connect használata
+#### Connect használata
 
-### egy parameterrel rendelkező függvények esetén:
+##### egy parameterrel rendelkező függvények esetén:
 
-`connect(küldő, &fv, vevő, &fv)`
+connect(küldő, &fv, vevő, &fv)
 
-### legszerűbb megoldás:
+##### legszerűbb megoldás:
 
-`connect(küldő, SIGNAL(fv(int x, double y)), vevő, SLOT(int x, double y))`
+connect(küldő, SIGNAL(fv(int x, double y)), vevő, SLOT(int x, double y))
 
 Default value esetén a SIGNAL-ben található függvény argumentumai nem lehet kevesebb, mint a SLOT-ban
 
@@ -164,13 +167,13 @@ connect(sender, SIGNAL(destroyed(QObject*)), this, SLOT(objectDestroyed()));
 connect(sender, SIGNAL(destroyed()), this, SLOT(objectDestroyed()));
 ```
 
-### Rossz:
+##### Rossz:
 
 ```c++
 connect(sender, SIGNAL(destroyed()), this, SLOT(objectDestroyed(QObject*)));
 ```
 
-### Egy Osztályban példa:
+##### Egy Osztályban példa:
 
 ```c++
 foo.h
@@ -186,7 +189,7 @@ public slots:
 connect(foo, &clicked, bar, &slots);
 ```
 
-## Példa
+#### Példa
 
 ```c++
 #include <QObject>
@@ -229,7 +232,7 @@ b.setValue(48);     // a.value() == 12, b.value() == 48
 
 ---
 
-# [The Qt Resource System](https://doc.qt.io/qt-5/resources.html)(qrc)
+### [The Qt Resource System](https://doc.qt.io/qt-5/resources.html)(qrc)
 
 Platform függetlenül tárolja a bináris fájlokat a futtatható alkalmazásban.
 
@@ -248,29 +251,29 @@ Platform függetlenül tárolja a bináris fájlokat a futtatható alkalmazásba
 </RCC>
 ```
 
-## Elérése
+#### Elérése
 
 :/ használatával
 
 ![](assets/img/resources.png)
 
-## qmake(.pro)
+#### qmake(.pro)
 
 `RESOURCES     = application.qrc`
 
 ---
 
-# [Internationalization with Qt](https://doc.qt.io/qt-5/internationalization.html)
+### [Internationalization with Qt](https://doc.qt.io/qt-5/internationalization.html)
 
-## A **tr()** macro használatával lehetséges
+#### A **tr()** macro használatával lehetséges
 
 `tr("Hello %1!").arg("World");`
 
-## qmake(.pro) TRANSLATIONS
+#### qmake(.pro) TRANSLATIONS
 
 `TRANSLATIONS = TranslationExample_en.ts`
 
-## Fordítás folyamata:
+#### Fordítás folyamata:
 
 ```
 lupdate TranslationExample.pro
@@ -278,7 +281,7 @@ linguist TranslationExample_en.ts
 lrelease TranslationExample.pro
 ```
 
-## Maga a kódban:
+#### Maga a kódban:
 
 ```c++
 int main(int argc, char *argv[])
@@ -300,7 +303,7 @@ int main(int argc, char *argv[])
 ```
 ---
 
-# [QDoc](https://doc.qt.io/qt-5/qdoc-guide.html)
+### [QDoc](https://doc.qt.io/qt-5/qdoc-guide.html)
 
 Mintapélda [doc.qt.io](https://doc.qt.io)
 
@@ -314,7 +317,7 @@ Mintapélda [doc.qt.io](https://doc.qt.io)
 
 ---
 
-# [qmake](https://doc.qt.io/qt-5/qmake-manual.html)
+### [qmake](https://doc.qt.io/qt-5/qmake-manual.html)
 
 ---
 
