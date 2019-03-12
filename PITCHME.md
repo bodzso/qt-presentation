@@ -1,6 +1,6 @@
 # [Qt keretrendszer](https://doc.qt.io)
 
-![](assets/img/Qt-logo-large.png)
+---?image=assets/img/Qt-logo-large.png
 
 ---
 
