@@ -11,7 +11,7 @@
 QT += core
 ```
 
-Mirről lesz szó:
+Mirről lesz szó
 
 @ul
 
@@ -101,6 +101,8 @@ private:
 ```
 +++
 
+#### Használata
+
 ```c++
 MyClass *myinstance = new MyClass;
 QObject *object = myinstance;
@@ -132,11 +134,13 @@ children()
 
 ### [Signals & Slots](https://doc.qt.io/qt-5/signalsandslots.html)
 
+meta-object systemnek köszönhető
+
 ![](assets/img/abstract-connections.png)
 
 +++
 
-meta-object systemnek köszönhető
+@title[Signals & Slots]
 
 Object-ek közötti kommunikációra, callback módszer helyett, még a szálakkal sem kell foglalkozni.
 
@@ -156,16 +160,23 @@ A **Signal** signature-nek meg kell egyeznie a **Slot** signature-el.
 #### Connect használata
 
 ##### egy parameterrel rendelkező függvények esetén:
-
+```c++
 connect(küldő, &fv, vevő, &fv)
+```
 
-##### legszerűbb megoldás:
+##### legszerűbb megoldás
 
+```c++
 connect(küldő, SIGNAL(fv(int x, double y)), vevő, SLOT(int x, double y))
+```
 
 Default value esetén a SIGNAL-ben található függvény argumentumai nem lehet kevesebb, mint a SLOT-ban
 
 +++
+
+@title[Connect használata]
+
+##### Helyes
 
 ```c++
 void destroyed(QObject* = 0);
@@ -176,7 +187,7 @@ connect(sender, SIGNAL(destroyed(QObject*)), this, SLOT(objectDestroyed()));
 connect(sender, SIGNAL(destroyed()), this, SLOT(objectDestroyed()));
 ```
 
-##### Rossz:
+##### Ez már rossz
 
 ```c++
 connect(sender, SIGNAL(destroyed()), this, SLOT(objectDestroyed(QObject*)));
@@ -184,7 +195,7 @@ connect(sender, SIGNAL(destroyed()), this, SLOT(objectDestroyed(QObject*)));
 
 +++
 
-##### Egy Osztályban példa:
+##### Egy Osztályban példa
 
 ```c++
 foo.h
@@ -237,6 +248,8 @@ void Counter::setValue(int value)
 
 +++
 
+##### Példa használata
+
 ```c++
 Counter a, b;
 QObject::connect(&a, &Counter::valueChanged,
@@ -277,7 +290,9 @@ Platform függetlenül tárolja a bináris fájlokat a futtatható alkalmazásba
 
 #### qmake(.pro)
 
-```RESOURCES     = application.qrc```
+```c++
+RESOURCES     = application.qrc
+```
 
 ---
 
@@ -285,13 +300,17 @@ Platform függetlenül tárolja a bináris fájlokat a futtatható alkalmazásba
 
 #### A **tr()** macro használatával lehetséges
 
-```tr("Hello %1!").arg("World");```
+```c++
+tr("Hello %1!").arg("World");
+```
 
 #### qmake(.pro) TRANSLATIONS
 
-```TRANSLATIONS = TranslationExample_en.ts```
+```
+TRANSLATIONS = TranslationExample_en.ts
+```
 
-#### Fordítás folyamata:
+#### Fordítás folyamata
 
 ```
 lupdate TranslationExample.pro
@@ -301,7 +320,7 @@ lrelease TranslationExample.pro
 
 +++
 
-#### Maga a kódban:
+#### Maga a kódban
 
 ```c++
 int main(int argc, char *argv[])
