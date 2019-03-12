@@ -28,13 +28,9 @@ QT += core
 
 ### [The Meta-Object System](https://doc.qt.io/qt-5/metaobjects.html)
 
-@ol
-
 - QObject biztosítja meta-object system-et
 - Q_OBJECT macro
 - Meta-Object Compiler (moc) hozza létre a kódot a háttérben
-
-@olend
 
 #### Példa
 
