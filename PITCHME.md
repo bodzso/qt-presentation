@@ -67,6 +67,8 @@ Q_PROPERTY(bool enabled READ isEnabled WRITE setEnabled)
 Q_PROPERTY(QCursor cursor READ cursor WRITE setCursor RESET unsetCursor)
 ```
 
++++
+
 #### Példa
 
 ```c++
@@ -97,6 +99,7 @@ private:
     Priority m_priority;
 };
 ```
++++
 
 ```c++
 MyClass *myinstance = new MyClass;
@@ -131,6 +134,8 @@ children()
 
 ![](assets/img/abstract-connections.png)
 
++++
+
 meta-object systemnek köszönhető
 
 Object-ek közötti kommunikációra, callback módszer helyett, még a szálakkal sem kell foglalkozni.
@@ -146,6 +151,8 @@ Object-ek közötti kommunikációra, callback módszer helyett, még a szálakk
 
 A **Signal** signature-nek meg kell egyeznie a **Slot** signature-el.
 
++++
+
 #### Connect használata
 
 ##### egy parameterrel rendelkező függvények esetén:
@@ -157,6 +164,8 @@ connect(küldő, &fv, vevő, &fv)
 connect(küldő, SIGNAL(fv(int x, double y)), vevő, SLOT(int x, double y))
 
 Default value esetén a SIGNAL-ben található függvény argumentumai nem lehet kevesebb, mint a SLOT-ban
+
++++
 
 ```c++
 void destroyed(QObject* = 0);
@@ -173,6 +182,8 @@ connect(sender, SIGNAL(destroyed()), this, SLOT(objectDestroyed()));
 connect(sender, SIGNAL(destroyed()), this, SLOT(objectDestroyed(QObject*)));
 ```
 
++++
+
 ##### Egy Osztályban példa:
 
 ```c++
@@ -188,6 +199,8 @@ public slots:
 
 connect(foo, &clicked, bar, &slots);
 ```
+
++++
 
 #### Példa
 
@@ -221,6 +234,9 @@ void Counter::setValue(int value)
     }
 }
 ```
+
++++
+
 ```c++
 Counter a, b;
 QObject::connect(&a, &Counter::valueChanged,
@@ -251,6 +267,8 @@ Platform függetlenül tárolja a bináris fájlokat a futtatható alkalmazásba
 </RCC>
 ```
 
++++
+
 #### Elérése
 
 :/ használatával
@@ -259,7 +277,7 @@ Platform függetlenül tárolja a bináris fájlokat a futtatható alkalmazásba
 
 #### qmake(.pro)
 
-`RESOURCES     = application.qrc`
+```RESOURCES     = application.qrc```
 
 ---
 
@@ -267,11 +285,11 @@ Platform függetlenül tárolja a bináris fájlokat a futtatható alkalmazásba
 
 #### A **tr()** macro használatával lehetséges
 
-`tr("Hello %1!").arg("World");`
+```tr("Hello %1!").arg("World");```
 
 #### qmake(.pro) TRANSLATIONS
 
-`TRANSLATIONS = TranslationExample_en.ts`
+```TRANSLATIONS = TranslationExample_en.ts```
 
 #### Fordítás folyamata:
 
@@ -280,6 +298,8 @@ lupdate TranslationExample.pro
 linguist TranslationExample_en.ts
 lrelease TranslationExample.pro
 ```
+
++++
 
 #### Maga a kódban:
 
@@ -309,16 +329,14 @@ Mintapélda [doc.qt.io](https://doc.qt.io)
 
 ![](assets/img/doc.qt.io.png)
 
++++
+
 - **QDoc** binary
 - **qdocconf** configuration files
 - Documentation in C++, QML, and **.qdoc** files
 
-
-
 ---
 
 ### [qmake](https://doc.qt.io/qt-5/qmake-manual.html)
-
----
 
 TODO
